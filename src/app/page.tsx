@@ -91,27 +91,27 @@ export default function Home() {
 
     /* 2. Features bar — scale reveal */
     if (featuresRef.current) {
-      scaleReveal(featuresRef.current.querySelectorAll(".feature-item"));
+      scaleReveal(Array.from(featuresRef.current.querySelectorAll(".feature-item")));
     }
 
     /* 3. Sport cards — stagger up */
     if (sportsRef.current) {
       staggerCards(
-        sportsRef.current.querySelectorAll(".sport-card"),
+        Array.from(sportsRef.current.querySelectorAll(".sport-card")),
         sportsRef.current
       );
     }
 
     /* 4. Deal section — slide in from sides */
     if (dealSectionRef.current) {
-      fadeUpReveal(dealSectionRef.current.querySelectorAll(".deal-text > *"));
+      fadeUpReveal(Array.from(dealSectionRef.current.querySelectorAll(".deal-text > *")));
       if (dealImgRef.current) slideIn(dealImgRef.current, "right");
     }
 
     /* 5. Best sellers grid — stagger */
     if (bestSellerRef.current) {
       staggerCards(
-        bestSellerRef.current.querySelectorAll(".product-card-wrap"),
+        Array.from(bestSellerRef.current.querySelectorAll(".product-card-wrap")),
         bestSellerRef.current
       );
     }
