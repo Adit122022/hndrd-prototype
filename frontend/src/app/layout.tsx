@@ -6,6 +6,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -33,16 +35,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable} h-full antialiased`}>
-      <body cz-shortcut-listen="true" className="min-h-full flex flex-col bg-[#F9F8F6] text-[#0D0D0D] font-inter overflow-x-hidden">
-        <SmoothScrollProvider>
-          <CartProvider>
-            <Navbar />
-            <CartDrawer />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </CartProvider>
-        </SmoothScrollProvider>
+    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
+      <body cz-shortcut-listen="true" className="h-full antialiased min-h-full flex flex-col bg-background text-foreground font-inter overflow-x-hidden">
+      
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <SmoothScrollProvider>
+            <CartProvider>
+              <Navbar />
+              <CartDrawer />
+              <WhatsAppButton />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </CartProvider>
+          </SmoothScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
